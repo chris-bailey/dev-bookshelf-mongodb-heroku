@@ -56,7 +56,7 @@
 				<input name="file" type="file" />
 				<p />
 	
-				<input type="hidden" th:field="*{id}" /> <input type="hidden" th:field="*{version}" />
+				<input type="hidden" th:field="*{id}" />
 	
 				<button type="submit" class="btn btn-success " th:text="#{btn_save}">Save</button>				
 				
@@ -79,7 +79,7 @@
 	<script>
 		$(function() {
 			$('#dateOfPublication').datepicker({
-			    format: "yyyy-mm-dd",
+		     	format: "yyyy-mm-dd",   
 			    autoclose: true,
 			});
 			

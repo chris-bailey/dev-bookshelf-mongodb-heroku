@@ -4,12 +4,17 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.chrisbaileydeveloper.bookshelf.domain.util.CustomDateTimeDeserializer;
 import com.chrisbaileydeveloper.bookshelf.domain.util.CustomDateTimeSerializer;
+
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import javax.validation.constraints.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -32,8 +37,10 @@ public class Mongobook implements Serializable {
     @Field("publisher")
     private String publisher;
 
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+    /*@JsonSerialize(using = CustomDateTimeSerializer.class)
+    @JsonDeserialize(using = CustomDateTimeDeserializer.class)*/
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+	@DateTimeFormat(iso = ISO.DATE)
     @Field("date_of_publication")
     private DateTime dateOfPublication;
 

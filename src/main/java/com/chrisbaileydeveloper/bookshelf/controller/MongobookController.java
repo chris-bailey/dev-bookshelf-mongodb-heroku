@@ -138,7 +138,7 @@ public class MongobookController {
 		} else { // File is improper type or no file was uploaded.
 
 			// If book already exists, load its image into the 'book' object.
-			if (book.getId() != null) {
+			if (!book.getId().isEmpty()) {
 				Mongobook savedMongobook = mongobookService.findById(book.getId());
 				book.setPhoto(savedMongobook.getPhoto());
 
