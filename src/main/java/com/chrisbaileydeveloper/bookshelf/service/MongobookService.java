@@ -16,14 +16,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import com.chrisbaileydeveloper.bookshelf.controller.ArchiveBookController;
 import com.chrisbaileydeveloper.bookshelf.domain.Mongobook;
 import com.chrisbaileydeveloper.bookshelf.repository.MongobookRepository;
 import com.google.common.collect.Lists;
 
 @Service
 public class MongobookService {
-	final Logger logger = LoggerFactory.getLogger(ArchiveBookController.class);
+	final Logger logger = LoggerFactory.getLogger(MongobookService.class);
 
 	@Inject
 	private MongobookRepository mongobookRepository;
