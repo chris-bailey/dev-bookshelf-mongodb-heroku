@@ -1,9 +1,10 @@
 package com.chrisbaileydeveloper.bookshelf.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.chrisbaileydeveloper.bookshelf.domain.util.CustomDateTimeDeserializer;
-import com.chrisbaileydeveloper.bookshelf.domain.util.CustomDateTimeSerializer;
+import java.io.Serializable;
+import java.util.Objects;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -12,11 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
-
-import javax.validation.constraints.*;
-
-import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A Mongobook.
@@ -37,8 +33,6 @@ public class Mongobook implements Serializable {
     @Field("publisher")
     private String publisher;
 
-    /*@JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)*/
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	@DateTimeFormat(iso = ISO.DATE)
     @Field("date_of_publication")
@@ -98,7 +92,23 @@ public class Mongobook implements Serializable {
         this.photo = photo;
     }
 
-    @Override
+    
+    /** No-args constructor */
+    public Mongobook() {
+	}
+
+    /** Constructor */
+	public Mongobook(String id, String name, String publisher,
+			DateTime dateOfPublication, String description, String photo) {
+		this.id = id;
+		this.name = name;
+		this.publisher = publisher;
+		this.dateOfPublication = dateOfPublication;
+		this.description = description;
+		this.photo = photo;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -122,7 +132,7 @@ public class Mongobook implements Serializable {
     @Override
     public String toString() {
         return "Mongobook{" +
-                "id=" + id +
+                "_id=" + id +
                 ", name='" + name + "'" +
                 ", publisher='" + publisher + "'" +
                 ", dateOfPublication='" + dateOfPublication + "'" +

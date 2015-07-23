@@ -1,13 +1,20 @@
 package com.chrisbaileydeveloper.bookshelf.service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.bson.types.ObjectId;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.chrisbaileydeveloper.bookshelf.controller.ArchiveBookController;
 import com.chrisbaileydeveloper.bookshelf.domain.Mongobook;
@@ -47,9 +54,8 @@ public class MongobookService {
 	/**
 	 * Restore the original set of books to the database.
 	 */
-	// CJB -> TODO -> Work on this after many other things are setup.
-	/*public void restoreDefaultBooks() {
-		ClassPathResource resource = new ClassPathResource("/config/liquibase/books.csv");
+	public void restoreDefaultMongobooks() {
+		ClassPathResource resource = new ClassPathResource("/config/mongobooks.csv");
 
 		BufferedReader br = null;
 
@@ -66,20 +72,20 @@ public class MongobookService {
 			while ((line = br.readLine()) != null) {
 				String[] words = line.split("~");
 
-				Integer version = Integer.valueOf(words[0]);
-				String name = words[1];
-				String publisher = words[2];
+				String name = words[0];
+				String publisher = words[1];
 
 				DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
-				DateTime dateOfPublication = formatter.parseDateTime(words[3]);
+				DateTime dateOfPublication = formatter.parseDateTime(words[2]);
 
-				String description = words[4];
-				String photo = words[5];
+				String description = words[3];
+				String photo = words[4];
 
-				Book b = new Book(version, name, publisher, dateOfPublication,
+				String id = new ObjectId().toString();
+				Mongobook mb = new Mongobook(id, name, publisher, dateOfPublication,
 						description, photo);
 
-				bookRepository.save(b);
+				mongobookRepository.save(mb);
 			}
 
 		} catch (IOException e) {
@@ -93,5 +99,5 @@ public class MongobookService {
 			}
 		}
 
-	}*/
+	}
 }

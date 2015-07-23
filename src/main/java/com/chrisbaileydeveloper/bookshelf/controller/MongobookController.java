@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +86,9 @@ public class MongobookController {
 	 */
 	@RequestMapping(value="/create", method=RequestMethod.GET)
     public String createForm(Model model) {
-		model.addAttribute("book", new Mongobook());
+		Mongobook mb = new Mongobook();
+		mb.setId(new ObjectId().toString());
+		model.addAttribute("book", mb);
         return "books/create";
     }
 
@@ -138,10 +141,10 @@ public class MongobookController {
 		} else { // File is improper type or no file was uploaded.
 
 			// If book already exists, load its image into the 'book' object.
-			if (!book.getId().isEmpty()) {
-				Mongobook savedMongobook = mongobookService.findById(book.getId());
+			Mongobook savedMongobook = mongobookService.findById(book.getId());
+			
+			if (savedMongobook != null) {
 				book.setPhoto(savedMongobook.getPhoto());
-
 			} else {// Else set to default no-image picture.
 				book.setPhoto(ImageUtil.smallNoImage());
 			}
@@ -191,8 +194,7 @@ public class MongobookController {
 	}
 	
 	
-	// TODO -> Come back to this CJB 
-	/*@RequestMapping(value="/reset", method=RequestMethod.GET)
+	@RequestMapping(value="/reset", method=RequestMethod.GET)
 	public String resetDatabase(Model model) {
 		logger.info("Resetting database to original state");
 		
@@ -203,5 +205,5 @@ public class MongobookController {
 		model.addAttribute("books", books);
 
 		return "books/list";
-	}*/
+	}
 }

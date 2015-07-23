@@ -1,14 +1,16 @@
 ##Spring Boot + MongoDB + Heroku##
-This demo application has been created as an example of using Spring Boot + MongoDB deployed on Heroku. 
+This demo application has been created as an example of using Spring Boot + MongoDB deployed on Heroku.
 
 
 ###Live Demo###
 Be aware that the template is currently running on a free Heroku account.  If it hasn't been accessed in 30 minutes, then ***the first request will take up to 60 seconds***.  Please be patient with the first request. Subsequent requests will be normal.  
 
-Here is the [Developer's Bookshelf](https://developer-bookshelf-heroku.herokuapp.com/) running on Heroku.
+Here is the [MongoDB Developer's Bookshelf](https://developer-bookshelf-heroku.herokuapp.com/) running on Heroku.
 
 
 ###Local Deployment###
+Load a local MongoDB database on port 27017.
+
 ```
 $ mvn clean install  
 $ mvn spring-boot:run
