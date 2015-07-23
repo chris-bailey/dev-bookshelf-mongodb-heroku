@@ -1,63 +1,54 @@
 package com.chrisbaileydeveloper.bookshelf.service;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.chrisbaileydeveloper.bookshelf.controller.ArchiveBookController;
-import com.chrisbaileydeveloper.bookshelf.domain.Book;
-import com.chrisbaileydeveloper.bookshelf.repository.BookRepository;
+import com.chrisbaileydeveloper.bookshelf.domain.Mongobook;
+import com.chrisbaileydeveloper.bookshelf.repository.MongobookRepository;
 import com.google.common.collect.Lists;
 
 @Service
-@Transactional
-public class BookService {
+public class MongobookService {
 	final Logger logger = LoggerFactory.getLogger(ArchiveBookController.class);
 
 	@Inject
-	private BookRepository bookRepository;
+	private MongobookRepository mongobookRepository;
 
-	@Transactional(readOnly = true)
-	public List<Book> findAll() {
-		return Lists.newArrayList(bookRepository.findAll());
+	public List<Mongobook> findAll() {
+		return Lists.newArrayList(mongobookRepository.findAll());
 	}
 
-	@Transactional(readOnly = true)
-	public Book findById(Long id) {
-		return bookRepository.findOneById(id);
+	public Mongobook findById(String id) {
+		return mongobookRepository.findOneById(id);
 	}
 
-	public Book save(Book book) {
-		return bookRepository.save(book);
+	public Mongobook save(Mongobook mongobook) {
+		return mongobookRepository.save(mongobook);
 	}
 
-	public void delete(Book book) {
-		bookRepository.delete(book);
+	public void delete(Mongobook mongobook) {
+		mongobookRepository.delete(mongobook);
 	}
 
 	/**
 	 * Removes all Book entities from database.
 	 */
 	public void deleteAll() {
-		bookRepository.deleteAll();
+		mongobookRepository.deleteAll();
 	}
 
 	/**
 	 * Restore the original set of books to the database.
 	 */
-	public void restoreDefaultBooks() {
+	// CJB -> TODO -> Work on this after many other things are setup.
+	/*public void restoreDefaultBooks() {
 		ClassPathResource resource = new ClassPathResource("/config/liquibase/books.csv");
 
 		BufferedReader br = null;
@@ -102,5 +93,5 @@ public class BookService {
 			}
 		}
 
-	}
+	}*/
 }

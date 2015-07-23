@@ -1,6 +1,6 @@
 package com.chrisbaileydeveloper.bookshelf.config;
 
-import java.net.URI;
+/*import java.net.URI;
 import java.net.URISyntaxException;
 
 import javax.sql.DataSource;
@@ -16,13 +16,13 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 
 import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
+import com.zaxxer.hikari.HikariDataSource;*/
 
-@Configuration
-public class HerokuDatabaseConfiguration implements EnvironmentAware {
+//@Configuration
+public class ArchiveHerokuDatabaseConfiguration/* implements EnvironmentAware*/ {
 
-	private final Logger log = LoggerFactory
-			.getLogger(HerokuDatabaseConfiguration.class);
+	/*private final Logger log = LoggerFactory
+			.getLogger(ArchiveHerokuDatabaseConfiguration.class);
 
 	private RelaxedPropertyResolver propertyResolver;
 
@@ -67,5 +67,5 @@ public class HerokuDatabaseConfiguration implements EnvironmentAware {
 			throw new ApplicationContextException(
 					"Heroku database URL is not configured, you must set --spring.datasource.heroku-url=$DATABASE_URL");
 		}
-	}
+	}*/
 }

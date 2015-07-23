@@ -1,19 +1,12 @@
-##Spring Boot + Thymeleaf + Heroku + Liquibase##
-This demo application has been created as an example utilization of the [Spring Boot + Thymeleaf + Heroku Template](https://github.com/chris-bailey/spring-boot-thymeleaf-heroku-template).  Detailed steps documenting the creation of this application can be found in the following blog post (ADD LINK) on my website.
+##Spring Boot + MongoDB + Heroku##
+This demo application has been created as an example of using Spring Boot + MongoDB deployed on Heroku. 
 
-###Technology Stack###
-1. Spring Boot, no-xml Spring MVC 4 web application for Servlet 3.0 environment
-1. Thymeleaf templates with added Joda Time & Spring Security Dialects  
-1. Heroku fully cloud deployable
-1. JPA 2.0 (Spring Data JPA/Hibernate)
-1. Database (Liquibase/PostgreSQL/H2 embedded/HikariCP)  
-1. Testing (JUnit/Mockito/MockMVC/AssertJ/Hamcrest)  
-1. Java 8, Spring Security 3.2, Maven 3, SLF4J, Logback, Bootstrap 3.3.4, jQuery 1.11.2, i18n
 
 ###Live Demo###
 Be aware that the template is currently running on a free Heroku account.  If it hasn't been accessed in 30 minutes, then ***the first request will take up to 60 seconds***.  Please be patient with the first request. Subsequent requests will be normal.  
 
 Here is the [Developer's Bookshelf](https://developer-bookshelf-heroku.herokuapp.com/) running on Heroku.
+
 
 ###Local Deployment###
 ```

@@ -25,20 +25,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.chrisbaileydeveloper.bookshelf.domain.Book;
-import com.chrisbaileydeveloper.bookshelf.service.BookService;
+import com.chrisbaileydeveloper.bookshelf.domain.Mongobook;
+import com.chrisbaileydeveloper.bookshelf.service.MongobookService;
 import com.chrisbaileydeveloper.bookshelf.web.util.ImageUtil;
 import com.chrisbaileydeveloper.bookshelf.web.util.Message;
 import com.chrisbaileydeveloper.bookshelf.web.util.UrlUtil;
 
 @RequestMapping("/")
 @Controller
-public class BookController { 
+public class MongobookController { 
 
-	final Logger logger = LoggerFactory.getLogger(BookController.class);
+	final Logger logger = LoggerFactory.getLogger(MongobookController.class);
 
 	@Autowired
-	private BookService bookService;
+	private MongobookService mongobookService;
 
 	@Autowired
 	private MessageSource messageSource;
@@ -50,7 +50,7 @@ public class BookController {
 	public String list(Model model) {
 		logger.info("Listing books");
 
-		List<Book> books = bookService.findAll();
+		List<Mongobook> books = mongobookService.findAll();
 		model.addAttribute("books", books);
 
 		logger.info("No. of books: " + books.size());
@@ -62,10 +62,10 @@ public class BookController {
 	 * Retrieve the book with the specified id.
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String show(@PathVariable("id") Long id, Model model) {
+	public String show(@PathVariable("id") String id, Model model) {
 		logger.info("Listing book with id: " + id);
 
-		Book book = bookService.findById(id);
+		Mongobook book = mongobookService.findById(id);
 		model.addAttribute("book", book);
 		
 		return "books/show";
@@ -75,8 +75,8 @@ public class BookController {
 	 * Retrieve the book with the specified id for the update form.
 	 */
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String updateForm(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("book", bookService.findById(id));
+    public String updateForm(@PathVariable("id") String id, Model model) {
+		model.addAttribute("book", mongobookService.findById(id));
         return "books/create";
     }
 
@@ -85,7 +85,7 @@ public class BookController {
 	 */
 	@RequestMapping(value="/create", method=RequestMethod.GET)
     public String createForm(Model model) {
-		model.addAttribute("book", new Book());
+		model.addAttribute("book", new Mongobook());
         return "books/create";
     }
 
@@ -93,7 +93,7 @@ public class BookController {
 	 * Create/update a book.
 	*/
 	@RequestMapping(value="/create", method = RequestMethod.POST)
-	public String create(@Valid Book book, BindingResult bindingResult,
+	public String create(@Valid Mongobook book, BindingResult bindingResult,
 			Model model, HttpServletRequest httpServletRequest,
 			RedirectAttributes redirectAttributes, Locale locale,
 			@RequestParam(value = "file", required = false) MultipartFile file) {
@@ -139,15 +139,15 @@ public class BookController {
 
 			// If book already exists, load its image into the 'book' object.
 			if (book.getId() != null) {
-				Book savedBook = bookService.findById(book.getId());
-				book.setPhoto(savedBook.getPhoto());
+				Mongobook savedMongobook = mongobookService.findById(book.getId());
+				book.setPhoto(savedMongobook.getPhoto());
 
 			} else {// Else set to default no-image picture.
 				book.setPhoto(ImageUtil.smallNoImage());
 			}
 		}
 
-		bookService.save(book);
+		mongobookService.save(book);
 
 		return "redirect:/" + UrlUtil.encodeUrlPathSegment(book.getId().toString(), httpServletRequest);
 	}
@@ -157,9 +157,9 @@ public class BookController {
 	 */
 	@RequestMapping(value = "/photo/{id}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
-	public byte[] downloadPhoto(@PathVariable("id") Long id) {
+	public byte[] downloadPhoto(@PathVariable("id") String id) {
 
-		Book book = bookService.findById(id);
+		Mongobook book = mongobookService.findById(id);
 		logger.info("Downloading photo for id: {} with size: {}", book.getId(), book.getPhoto().length());
 
 		// Convert String image into byte[]
@@ -172,34 +172,36 @@ public class BookController {
 	 * Deletes the book with the specified id.
 	 */
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable Long id, Model model, Locale locale) {
+	public String delete(@PathVariable String id, Model model, Locale locale) {
 		logger.info("Deleting book with id: " + id);
-		Book book = bookService.findById(id);
+		Mongobook book = mongobookService.findById(id);
 
 		if (book != null) {
-			bookService.delete(book);
-			logger.info("Book deleted successfully");
+			mongobookService.delete(book);
+			logger.info("Mongobook deleted successfully");
 
 			model.addAttribute("message",	new Message("success", messageSource.getMessage(
 							"book_delete_success", new Object[] {}, locale)));
 		}
 
-		List<Book> books = bookService.findAll();
+		List<Mongobook> books = mongobookService.findAll();
 		model.addAttribute("books", books);
 
 		return "books/list";
 	}
 	
-	@RequestMapping(value="/reset", method=RequestMethod.GET)
+	
+	// TODO -> Come back to this CJB 
+	/*@RequestMapping(value="/reset", method=RequestMethod.GET)
 	public String resetDatabase(Model model) {
 		logger.info("Resetting database to original state");
 		
-		bookService.deleteAll();
-		bookService.restoreDefaultBooks();
+		mongobookService.deleteAll();
+		mongobookService.restoreDefaultMongobooks();
 		
-		List<Book> books = bookService.findAll();
+		List<Mongobook> books = mongobookService.findAll();
 		model.addAttribute("books", books);
 
 		return "books/list";
-	}
+	}*/
 }
