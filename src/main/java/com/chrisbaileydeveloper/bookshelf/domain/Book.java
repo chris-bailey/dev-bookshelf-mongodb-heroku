@@ -97,10 +97,9 @@ public class Book implements Serializable {
     public Book() {
 	}
 
-    /** Constructor */
-	public Book(String id, String name, String publisher,
-			DateTime dateOfPublication, String description, String photo) {
-		this.id = id;
+	/** Constructor */
+	public Book(String name, String publisher, DateTime dateOfPublication,
+			String description, String photo) {
 		this.name = name;
 		this.publisher = publisher;
 		this.dateOfPublication = dateOfPublication;

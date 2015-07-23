@@ -80,11 +80,10 @@ public class BookService {
 				String description = words[3];
 				String photo = words[4];
 
-				String id = new ObjectId().toString();
-				Book mb = new Book(id, name, publisher, dateOfPublication,
-						description, photo);
+				Book b = new Book(name, publisher, dateOfPublication, description, photo);
+				b.setId(new ObjectId().toString());
 
-				bookRepository.save(mb);
+				bookRepository.save(b);
 			}
 
 		} catch (IOException e) {
