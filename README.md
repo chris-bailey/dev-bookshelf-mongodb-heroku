@@ -5,7 +5,7 @@ This demo application has been created as an example of using Spring Boot + Mong
 ###Live Demo###
 Be aware that the template is currently running on a free Heroku account.  If it hasn't been accessed in 30 minutes, then ***the first request will take up to 60 seconds***.  Please be patient with the first request. Subsequent requests will be normal.  
 
-Here is the [MongoDB Developer's Bookshelf](https://developer-bookshelf-heroku.herokuapp.com/) running on Heroku.
+Here is the [MongoDB Developer's Bookshelf](https://dev-bookshelf-mongodb.herokuapp.com/) running on Heroku.
 
 
 ###Local Deployment###
@@ -48,6 +48,9 @@ Note that your Heroku account must have a credit card attached in order to use f
 $ heroku addons:create mongolab:sandbox
 ```
 
+Retrieve your MongoDB database name from the Heroku Dashboard by clicking on the MongoLab addon.  Place the database name into the `application-prod.yml` configuration file in the database field.
+
+
 Deploy project to Heroku  
 ```
 $ git push heroku master
@@ -62,11 +65,6 @@ If your application deploys without timing out then open it as follows
 ```
 $ heroku open
 ```
-
-###Special Thanks###
-A big thank you to [Julien Dubois](http://www.julien-dubois.com/) and the [JHipster](https://jhipster.github.io/) project for leading the way in the rapid development of Spring applications, as well as for part of the foundation for this template.  JHipster is a Yeoman generator used to create Spring + AngularJS projects, with full hot reload of Java and JavaScript code.
-
-Also, thank you to Rafal Borowiec's for his impressive [spring-mvc-quickstart-archetype](https://github.com/kolorobot/spring-mvc-quickstart-archetype) project.
 
 
 ### Author ###
