@@ -19,6 +19,7 @@ public class SpringContextListener implements
 	 * collection into the MongoDB database.
 	 */
 	public void onApplicationEvent(ContextRefreshedEvent event) {
+		mongobookService.deleteAll();
 		mongobookService.restoreDefaultMongobooks();
 	};
 }
