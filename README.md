@@ -1,4 +1,4 @@
-##Spring Boot + MongoDB + Heroku##
+##Spring Boot + Thymeleaf + MongoDB + Heroku##
 This demo application has been created as an example of deploying a Spring Boot + Thymeleaf + MongoDB on Heroku.
 
 
@@ -51,17 +51,17 @@ $ heroku addons:create mongolab:sandbox
 Retrieve your MongoDB database name from the Heroku Dashboard by clicking on the MongoLab addon.  Place the database name into the `application-prod.yml` configuration file in the database field.
 
 
-Deploy project to Heroku  
+Deploy project to Heroku.  
 ```
 $ git push heroku master
 ```
 
-Look at your application logs to see what is happening behind the scenes  
+Look at your application logs to see what is happening behind the scenes.  
 ```
 $ heroku logs
 ```
 
-If your application deploys without timing out then open it as follows 
+If your application deploys without timing out then open it as follows. 
 ```
 $ heroku open
 ```
