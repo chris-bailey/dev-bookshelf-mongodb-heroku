@@ -42,9 +42,10 @@ Rename your Heroku application if interested
 $ heroku apps:rename new-name
 ```
 
-Add a PostgreSQL database to your Heroku application  
+Add a MongoDB database to your Heroku application with MongoLab.
+Note that your Heroku account must have a credit card attached in order to use free add-ons other than the PostgreSQL and MySQL add-ons.
 ```
-$ heroku addons:create heroku-postgresql
+$ heroku addons:create mongolab:sandbox
 ```
 
 Deploy project to Heroku  

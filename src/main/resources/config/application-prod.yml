@@ -6,6 +6,4 @@ spring:
         active: prod
     data:
         mongodb:
-            host: localhost
-            port: 27017
-            database: devBookshelfDB
+            database: heroku_gfpx8nw7
