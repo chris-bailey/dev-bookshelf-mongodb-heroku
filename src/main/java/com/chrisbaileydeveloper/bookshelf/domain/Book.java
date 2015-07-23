@@ -15,10 +15,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 /**
- * A Mongobook.
+ * A Book.
  */
-@Document(collection = "T_MONGOBOOK")
-public class Mongobook implements Serializable {
+@Document(collection = "T_BOOK")
+public class Book implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
     @Id
@@ -94,11 +94,11 @@ public class Mongobook implements Serializable {
 
     
     /** No-args constructor */
-    public Mongobook() {
+    public Book() {
 	}
 
     /** Constructor */
-	public Mongobook(String id, String name, String publisher,
+	public Book(String id, String name, String publisher,
 			DateTime dateOfPublication, String description, String photo) {
 		this.id = id;
 		this.name = name;
@@ -117,9 +117,9 @@ public class Mongobook implements Serializable {
             return false;
         }
 
-        Mongobook mongobook = (Mongobook) o;
+        Book book = (Book) o;
 
-        if ( ! Objects.equals(id, mongobook.id)) return false;
+        if ( ! Objects.equals(id, book.id)) return false;
 
         return true;
     }
@@ -131,7 +131,7 @@ public class Mongobook implements Serializable {
 
     @Override
     public String toString() {
-        return "Mongobook{" +
+        return "Book{" +
                 "_id=" + id +
                 ", name='" + name + "'" +
                 ", publisher='" + publisher + "'" +

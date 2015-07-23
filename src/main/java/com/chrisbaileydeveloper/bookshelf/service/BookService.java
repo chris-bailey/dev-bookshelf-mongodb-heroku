@@ -16,45 +16,45 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import com.chrisbaileydeveloper.bookshelf.domain.Mongobook;
-import com.chrisbaileydeveloper.bookshelf.repository.MongobookRepository;
+import com.chrisbaileydeveloper.bookshelf.domain.Book;
+import com.chrisbaileydeveloper.bookshelf.repository.BookRepository;
 import com.google.common.collect.Lists;
 
 @Service
-public class MongobookService {
-	final Logger logger = LoggerFactory.getLogger(MongobookService.class);
+public class BookService {
+	final Logger logger = LoggerFactory.getLogger(BookService.class);
 
 	@Inject
-	private MongobookRepository mongobookRepository;
+	private BookRepository bookRepository;
 
-	public List<Mongobook> findAll() {
-		return Lists.newArrayList(mongobookRepository.findAll());
+	public List<Book> findAll() {
+		return Lists.newArrayList(bookRepository.findAll());
 	}
 
-	public Mongobook findById(String id) {
-		return mongobookRepository.findOneById(id);
+	public Book findById(String id) {
+		return bookRepository.findOneById(id);
 	}
 
-	public Mongobook save(Mongobook mongobook) {
-		return mongobookRepository.save(mongobook);
+	public Book save(Book book) {
+		return bookRepository.save(book);
 	}
 
-	public void delete(Mongobook mongobook) {
-		mongobookRepository.delete(mongobook);
+	public void delete(Book book) {
+		bookRepository.delete(book);
 	}
 
 	/**
 	 * Removes all Book entities from database.
 	 */
 	public void deleteAll() {
-		mongobookRepository.deleteAll();
+		bookRepository.deleteAll();
 	}
 
 	/**
 	 * Restore the original set of books to the database.
 	 */
-	public void restoreDefaultMongobooks() {
-		ClassPathResource resource = new ClassPathResource("/config/mongobooks.csv");
+	public void restoreDefaultBooks() {
+		ClassPathResource resource = new ClassPathResource("/config/books.csv");
 
 		BufferedReader br = null;
 
@@ -81,10 +81,10 @@ public class MongobookService {
 				String photo = words[4];
 
 				String id = new ObjectId().toString();
-				Mongobook mb = new Mongobook(id, name, publisher, dateOfPublication,
+				Book mb = new Book(id, name, publisher, dateOfPublication,
 						description, photo);
 
-				mongobookRepository.save(mb);
+				bookRepository.save(mb);
 			}
 
 		} catch (IOException e) {
