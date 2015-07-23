@@ -1,9 +1,9 @@
 ##Spring Boot + MongoDB + Heroku##
-This demo application has been created as an example of using Spring Boot + MongoDB deployed on Heroku.
+This demo application has been created as an example of deploying a Spring Boot + Thymeleaf + MongoDB on Heroku.
 
 
 ###Live Demo###
-Be aware that the template is currently running on a free Heroku account.  If it hasn't been accessed in 30 minutes, then ***the first request will take up to 60 seconds***.  Please be patient with the first request. Subsequent requests will be normal.  
+Be aware that the application is currently running on a free Heroku account.  If it hasn't been accessed in 30 minutes, then ***the first request will take up to 60 seconds***.  Please be patient with the first request. Subsequent requests will be normal.  
 
 Here is the [MongoDB Developer's Bookshelf](https://dev-bookshelf-mongodb.herokuapp.com/) running on Heroku.
 
