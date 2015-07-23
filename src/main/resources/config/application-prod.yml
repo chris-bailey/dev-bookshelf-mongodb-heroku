@@ -6,3 +6,4 @@ spring:
         active: prod
     data:
         mongodb:
+            database: 
