@@ -3,10 +3,10 @@ package com.chrisbaileydeveloper.bookshelf.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -24,12 +24,12 @@ public class Book implements Serializable {
     @Id
     private String id;
 
-    @NotNull
+    @NotEmpty
     @Size(min = 5, max = 100)
     @Field("name")
     private String name;
 
-    @NotNull
+    @NotEmpty
     @Field("publisher")
     private String publisher;
 

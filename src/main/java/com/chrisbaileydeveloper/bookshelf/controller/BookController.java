@@ -86,9 +86,9 @@ public class BookController {
 	 */
 	@RequestMapping(value="/create", method=RequestMethod.GET)
     public String createForm(Model model) {
-		Book mb = new Book();
-		mb.setId(new ObjectId().toString());
-		model.addAttribute("book", mb);
+		Book b = new Book();
+		b.setId(new ObjectId().toString());
+		model.addAttribute("book", b);
         return "books/create";
     }
 
@@ -141,10 +141,10 @@ public class BookController {
 		} else { // File is improper type or no file was uploaded.
 
 			// If book already exists, load its image into the 'book' object.
-			Book savedMongobook = bookService.findById(book.getId());
+			Book savedBook = bookService.findById(book.getId());
 			
-			if (savedMongobook != null) {
-				book.setPhoto(savedMongobook.getPhoto());
+			if (savedBook != null) {
+				book.setPhoto(savedBook.getPhoto());
 			} else {// Else set to default no-image picture.
 				book.setPhoto(ImageUtil.smallNoImage());
 			}
@@ -181,7 +181,7 @@ public class BookController {
 
 		if (book != null) {
 			bookService.delete(book);
-			logger.info("Mongobook deleted successfully");
+			logger.info("Book deleted successfully");
 
 			model.addAttribute("message",	new Message("success", messageSource.getMessage(
 							"book_delete_success", new Object[] {}, locale)));
