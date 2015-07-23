@@ -6,4 +6,3 @@ spring:
         active: prod
     data:
         mongodb:
-            database: heroku_gfpx8nw7
