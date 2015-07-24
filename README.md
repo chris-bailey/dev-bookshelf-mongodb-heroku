@@ -1,6 +1,14 @@
 ##Spring Boot + Thymeleaf + MongoDB + Heroku##
 This demo application has been created as an example of deploying Spring Boot + Thymeleaf + MongoDB on Heroku.
 
+###Technology Stack###
+- Spring Boot, no-xml Spring MVC 4 web application for Servlet 3.0 environment
+- Spring Data MongoDB
+- Database (MongoDB, MongoLab)  
+- Thymeleaf templates with added Joda Time & Spring Security Dialects  
+- Heroku fully cloud deployable
+- Testing (JUnit/Mockito/MockMVC/AssertJ/Hamcrest)  
+- Java 8, Spring Security 3.2, Maven 3, SLF4J, Logback, Bootstrap 3.3.4, jQuery 1.11.2, i18n, etc
 
 ###Live Demo###
 Be aware that the application is currently running on a free Heroku account.  If it hasn't been accessed in 30 minutes, then ***the first request will take up to 60 seconds***.  Please be patient with the first request. Subsequent requests will be normal.  
@@ -48,7 +56,7 @@ Note that your Heroku account must have a credit card attached in order to use f
 $ heroku addons:create mongolab:sandbox
 ```
 
-Retrieve your MongoDB database name from the Heroku Dashboard by clicking on the MongoLab addon.  Place the database name into the `application-prod.yml` configuration file in the database field.
+Retrieve your MongoDB database name from the Heroku Dashboard by clicking on the MongoLab addon.  Place the database name into the `src/main/resources/config/application-prod.yml` configuration file in the database field.
 
 
 Deploy project to Heroku.  
