@@ -171,6 +171,12 @@
             <version>1.3.0</version>
             <scope>test</scope>
         </dependency>
+
+		<!-- H2 Database -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
 		
 		<!-- Joda Time to Thymeleaf Converter (Thymeleaf Dialect)-->
 		<!-- https://github.com/gcwilliams/jodatime-thymeleaf-dialect -->
