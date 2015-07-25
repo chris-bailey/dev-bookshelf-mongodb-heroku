@@ -68,12 +68,6 @@ public class BookControllerTest {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(bookController).build();
 	}
 	
-	@After
-	public void tearDown() {
-		// Remove books from test database.
-		bookRepository.deleteAll();
-	}
-
 	@Test
 	public void testList() throws Exception {
 		mockMvc.perform(get("/"))
