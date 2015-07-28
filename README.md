@@ -56,7 +56,7 @@ Note that your Heroku account must have a credit card attached in order to use f
 $ heroku addons:create mongolab:sandbox
 ```
 
-Retrieve your MongoDB database name from the Heroku Dashboard by clicking on the MongoLab addon.  Place the database name into the `src/main/resources/config/application-prod.yml` configuration file in the database field.
+Retrieve your MongoDB database name by clicking on the MongoLab addon.  Place the database name into the `src/main/resources/config/application-prod.yml` configuration file in the database field.
 
 
 Deploy project to Heroku.  
