@@ -1,5 +1,5 @@
 ##Spring Boot + MongoDB + Heroku Demo##
-This demo application has been created as an example of deploying Spring Boot + Thymeleaf + MongoDB on Heroku.
+This demo application has been created as an example of deploying Spring Boot + MongoDB on Heroku.  There is a detailed discussion of the migration of the demo application from JPA to MongoDB at the following [web page](http://chrisbaileydeveloper.com/projects/spring-boot-mongodb-heroku-demo/) on my website.
 
 ###Technology Stack###
 - Spring Boot, no-xml Spring MVC 4 web application for Servlet 3.0 environment
