@@ -1,4 +1,4 @@
-##Spring Boot + Thymeleaf + MongoDB + Heroku##
+##Spring Boot + MongoDB + Heroku Demo##
 This demo application has been created as an example of deploying Spring Boot + Thymeleaf + MongoDB on Heroku.
 
 ###Technology Stack###
