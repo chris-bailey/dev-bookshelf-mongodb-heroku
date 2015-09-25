@@ -19,7 +19,7 @@ Here is the [MongoDB Developer's Bookshelf](https://dev-bookshelf-mongodb.heroku
 
 
 ###Local Deployment###
-Load a local MongoDB database on port 27017.
+**Load a local MongoDB database** on port 27017.
 
 ```
 $ mvn clean install  
