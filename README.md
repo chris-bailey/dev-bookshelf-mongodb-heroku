@@ -60,6 +60,9 @@ $ heroku addons:create mongolab:sandbox
 
 Retrieve your MongoDB database name by clicking on the MongoLab addon.  Place the database name into the `src/main/resources/config/application-prod.yml` configuration file in the database field.
 
+Create a new collection by clicking on the MongoLab addon.  
+Click on the `Add collection` button.  
+Create a collection named `T_BOOK`.  
 
 Deploy project to Heroku.  
 ```
