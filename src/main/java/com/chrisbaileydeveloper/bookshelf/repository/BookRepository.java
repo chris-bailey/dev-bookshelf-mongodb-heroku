@@ -11,10 +11,4 @@ import com.chrisbaileydeveloper.bookshelf.domain.Book;
  */
 public interface BookRepository extends MongoRepository<Book,String> {
 	 Book findOneById(String id);
-	 
-	 List<Book> findAll();
-	 
-	 void delete(Book b);
-	 
-	 void deleteAll();
 }
