@@ -6,7 +6,7 @@ There is a detailed discussion of the migration of the demo application from JPA
 ###Technology Stack###
 - Spring Boot, no-xml Spring MVC 4 web application for Servlet 3.0 environment
 - Spring Data MongoDB
-- Database (MongoDB, MongoLab)  
+- Database (MongoDB, embedded MongoDB, MongoLab)  
 - Thymeleaf templates with added Joda Time & Spring Security Dialects  
 - Heroku fully cloud deployable
 - Testing (JUnit/Mockito/MockMVC/AssertJ/Hamcrest)  
@@ -22,8 +22,6 @@ Here is the [MongoDB Developer's Bookshelf](https://dev-bookshelf-mongodb.heroku
 
 
 ###Local Deployment###
-**Load a local MongoDB database** on port 27017.
-
 ```
 $ mvn clean install  
 $ mvn spring-boot:run
