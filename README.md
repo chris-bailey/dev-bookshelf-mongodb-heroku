@@ -14,9 +14,6 @@ This demo application has been created as an example of deploying Spring Boot + 
 ### Compatibility
 This application functions properly with versions of MongoDB previous to 3.0.  As of October 2015, Spring Data MongoDB does not offer a compatible Java driver that will work properly with MongoDB 3.0.  The current Spring Data MongoDB project is using a Java driver with version 2.12.5 whereas version 2.13 is required.
 
-### Live Demo 
-Be aware that this application is currently running on a free Heroku account.  If it hasn't been accessed in 30 minutes, then ***the first request will take up to 120 seconds***.  Note that the demo application might fail to load altogether if the Heroku servers are busy. 
-
 
 ### Local Deployment 
 ```
